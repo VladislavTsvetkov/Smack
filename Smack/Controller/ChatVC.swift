@@ -13,12 +13,19 @@ class ChatVC: UIViewController {
     //Outlets
     
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var rigntMenuBtn: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        menuBtn.addTarget(self.revealViewController(),
+                          action: #selector(SWRevealViewController.revealToggle(_:)),
+                          for: .touchUpInside)
+        rigntMenuBtn.addTarget(self.revealViewController(),
+                               action: #selector(SWRevealViewController.rightRevealToggle(_:)),
+                               for: .touchUpInside)
+        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     }
