@@ -14,6 +14,7 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 
 let BASE_URL = "https://goodsmack.herokuapp.com/"
 let URL_REGISTER = "\(BASE_URL)v1/account/register"
+let URL_LOGIN = "\(BASE_URL)v1/account/login"
 
 
 // Segues
@@ -25,3 +26,9 @@ let UNWIND = "unwindToChannel"
 let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
+
+// Headers
+
+let HEADER = [
+    "Content-Type": "application/json; charset=utf-8"
+]

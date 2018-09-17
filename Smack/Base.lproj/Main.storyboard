@@ -64,11 +64,6 @@
                                     <constraint firstAttribute="bottom" secondItem="n09-6C-87W" secondAttribute="bottom" constant="12" id="vfd-Q5-9Tm"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0o-DJ-QOB">
-                                <rect key="frame" x="146" y="148" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="rignt screen"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -80,7 +75,6 @@
                     </view>
                     <connections>
                         <outlet property="menuBtn" destination="n09-6C-87W" id="UoH-bE-was"/>
-                        <outlet property="rigntMenuBtn" destination="R0o-DJ-QOB" id="hai-1m-Kim"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08Z-eZ-kNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
