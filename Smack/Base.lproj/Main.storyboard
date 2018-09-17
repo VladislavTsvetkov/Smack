@@ -23,7 +23,6 @@
                     <connections>
                         <segue destination="paa-jA-tex" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="mR9-x2-as7"/>
                         <segue destination="yjc-Ew-4xF" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="8sF-BL-Nop"/>
-                        <segue destination="1DU-Ce-Han" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="IEe-29-gw8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,21 +86,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08Z-eZ-kNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="644" y="450"/>
-        </scene>
-        <!--Right View Controller-->
-        <scene sceneID="MnE-2k-RyU">
-            <objects>
-                <viewController id="1DU-Ce-Han" customClass="RightViewController" customModule="Smack" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HTI-g8-21q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="4Pi-35-sXV"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JCx-W6-tze" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="644" y="1109"/>
         </scene>
         <!--ChannelVC-->
         <scene sceneID="Ncc-jL-oDM">
@@ -286,7 +270,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AX8-kb-cjg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AX8-kb-cjg" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="62.5" y="286" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -330,7 +314,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-RE-mKB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-RE-mKB" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="62.5" y="597" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -341,6 +325,9 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="createAccoutPressed:" destination="DOL-YX-ykU" eventType="touchUpInside" id="i0k-Td-oW7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frg-Sk-rCp">
                                 <rect key="frame" x="331" y="28" width="28" height="28"/>
@@ -431,6 +418,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAccountBtnPressed:" destination="yd7-QP-GLD" eventType="touchUpInside" id="syP-tc-5Pi"/>
+                                    <action selector="pickBGColorPressed:" destination="DOL-YX-ykU" eventType="touchUpInside" id="jHZ-Kc-J1t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjg-bD-LOo">
@@ -444,6 +432,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAccountBtnPressed:" destination="yd7-QP-GLD" eventType="touchUpInside" id="IXd-Mf-bwB"/>
+                                    <action selector="pickAvatarPressed:" destination="DOL-YX-ykU" eventType="touchUpInside" id="sDX-ws-Mev"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -468,6 +457,10 @@
                         <viewLayoutGuide key="safeArea" id="2ot-pM-27G"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="wNO-Vm-xYU" id="zF3-Cg-cvQ"/>
+                        <outlet property="passwordTextField" destination="tkx-60-Ukh" id="54U-Gi-f0f"/>
+                        <outlet property="userImage" destination="5x0-wA-laZ" id="cCk-4G-kpf"/>
+                        <outlet property="usernameTextField" destination="GCM-8F-VVb" id="8uq-X4-01c"/>
                         <segue destination="wIR-z0-d3x" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="lBn-UI-2TE"/>
                     </connections>
                 </viewController>

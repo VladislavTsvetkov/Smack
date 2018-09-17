@@ -12,8 +12,8 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 
 // URL Constants
 
-let BASE_URL = "https://smack-application.herokuapp.com/"
-let URL_REGISTER = "\(BASE_URL)account/register"
+let BASE_URL = "https://goodsmack.herokuapp.com/"
+let URL_REGISTER = "\(BASE_URL)v1/account/register"
 
 
 // Segues

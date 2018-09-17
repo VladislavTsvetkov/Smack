@@ -16,7 +16,7 @@
 		9E3C22C920DEC2E7009F1424 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E3C22C720DEC2E7009F1424 /* LaunchScreen.storyboard */; };
 		9E3C22D420DF0E97009F1424 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3C22D220DF0E97009F1424 /* SWRevealViewController.m */; };
 		9E40D19E214E96A20076AE6A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E40D19D214E96A20076AE6A /* AuthService.swift */; };
-		9E5FCDDA214AE138007969C7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FCDD9214AE138007969C7 /* RightViewController.swift */; };
+		9EAB994B214F917600061506 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB994A214F917600061506 /* RoundedButton.swift */; };
 		9EFE957420E9558F00B5E8CB /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE957320E9558F00B5E8CB /* ChatVC.swift */; };
 		9EFE957820E955BC00B5E8CB /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE957720E955BC00B5E8CB /* ChannelVC.swift */; };
 		9EFE957A20E95B4100B5E8CB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE957920E95B4100B5E8CB /* GradientView.swift */; };
@@ -40,7 +40,7 @@
 		9E3C22D220DF0E97009F1424 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		9E3C22D320DF0E97009F1424 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		9E40D19D214E96A20076AE6A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		9E5FCDD9214AE138007969C7 /* RightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		9EAB994A214F917600061506 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		9EFE957320E9558F00B5E8CB /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		9EFE957720E955BC00B5E8CB /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		9EFE957920E95B4100B5E8CB /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9EFE957920E95B4100B5E8CB /* GradientView.swift */,
+				9EAB994A214F917600061506 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,7 +158,6 @@
 			children = (
 				9EFE957320E9558F00B5E8CB /* ChatVC.swift */,
 				9EFE957720E955BC00B5E8CB /* ChannelVC.swift */,
-				9E5FCDD9214AE138007969C7 /* RightViewController.swift */,
 				9E1F721620E97AF700CCA6DD /* LoginVC.swift */,
 				9E1F721820E97CDA00CCA6DD /* CreateAccountVC.swift */,
 			);
@@ -289,10 +289,10 @@
 				9E1F721720E97AF700CCA6DD /* LoginVC.swift in Sources */,
 				9EFE957A20E95B4100B5E8CB /* GradientView.swift in Sources */,
 				9E3C22BF20DEC2E5009F1424 /* AppDelegate.swift in Sources */,
+				9EAB994B214F917600061506 /* RoundedButton.swift in Sources */,
 				9E3C22D420DF0E97009F1424 /* SWRevealViewController.m in Sources */,
 				9E40D19E214E96A20076AE6A /* AuthService.swift in Sources */,
 				9E1F721520E976BD00CCA6DD /* Constants.swift in Sources */,
-				9E5FCDDA214AE138007969C7 /* RightViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

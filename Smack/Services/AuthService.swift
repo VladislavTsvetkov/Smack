@@ -44,14 +44,14 @@ class AuthService  {
     
     func registerUser (email: String, password: String, completion: @escaping CompletionHandler) {
         
-        let loverCaseEmail = email.lowercased()
+        let lowerCaseEmail = email.lowercased()
         
         let header = [
-            "Content-Type": "application/json; charset = utf8"
+            "Content-Type": "application/json; charset=utf-8"
         ]
         
         let body : [String: Any] = [
-            "email" : loverCaseEmail,
+            "email" : lowerCaseEmail,
             "password" : password
         ]
         
