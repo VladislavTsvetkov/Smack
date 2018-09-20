@@ -33,7 +33,7 @@ class UserDataService {
     func returnUIColor(components: String) -> UIColor {
         
         let scanner = Scanner(string: components)
-        let skipped = CharacterSet(charactersIn: "[], ]")
+        let skipped = CharacterSet(charactersIn: "[], ")
         let comma = CharacterSet(charactersIn: ",")
         scanner.charactersToBeSkipped = skipped
         
@@ -55,5 +55,16 @@ class UserDataService {
                        green: (CGFloat)(gUnwrapped.doubleValue),
                        blue:  (CGFloat)(bUnwrapped.doubleValue),
                        alpha: (CGFloat)(aUnwrapped.doubleValue))
+    }
+    
+    func logoutUser() {
+        id = ""
+        avatarName = ""
+        avatarColor = ""
+        email = ""
+        name = ""
+        AuthService.instance.isLogedIn = false
+        AuthService.instance.userEmail = ""
+        AuthService.instance.authToken = ""
     }
 }

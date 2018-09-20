@@ -276,13 +276,22 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginBtnPressed:" destination="yd7-QP-GLD" eventType="touchUpInside" id="SNz-5Q-xkB"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mbC-nT-nxi">
+                                <rect key="frame" x="169" y="205" width="37" height="37"/>
+                                <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MdJ-ba-mmZ" firstAttribute="top" secondItem="AX8-kb-cjg" secondAttribute="bottom" id="63T-pb-3iy"/>
                             <constraint firstItem="Bey-aO-cMw" firstAttribute="top" secondItem="tZf-R8-qQP" secondAttribute="bottom" constant="40" id="8Y9-vh-TNv"/>
+                            <constraint firstItem="mbC-nT-nxi" firstAttribute="centerY" secondItem="ONu-Kc-nri" secondAttribute="centerY" constant="-110" id="Fup-cp-i0A"/>
                             <constraint firstItem="AX8-kb-cjg" firstAttribute="top" secondItem="Bey-aO-cMw" secondAttribute="bottom" constant="40" id="HFq-7k-MUg"/>
+                            <constraint firstItem="mbC-nT-nxi" firstAttribute="centerX" secondItem="ONu-Kc-nri" secondAttribute="centerX" id="NnS-Bl-Ldj"/>
                             <constraint firstItem="tZf-R8-qQP" firstAttribute="top" secondItem="JfT-c7-FpA" secondAttribute="top" constant="60" id="aVm-gI-5pX"/>
                             <constraint firstItem="tZf-R8-qQP" firstAttribute="centerX" secondItem="ONu-Kc-nri" secondAttribute="centerX" id="bG1-aa-fbX"/>
                             <constraint firstItem="AX8-kb-cjg" firstAttribute="centerX" secondItem="ONu-Kc-nri" secondAttribute="centerX" id="bzk-gg-fQM"/>
@@ -294,6 +303,9 @@
                         <viewLayoutGuide key="safeArea" id="JfT-c7-FpA"/>
                     </view>
                     <connections>
+                        <outlet property="passwordTextField" destination="rdb-EL-9hE" id="0w8-gX-DOh"/>
+                        <outlet property="spinner" destination="mbC-nT-nxi" id="fsx-qQ-JC8"/>
+                        <outlet property="usernameTextField" destination="AXE-SB-h8Z" id="iAG-5I-hhn"/>
                         <segue destination="DOL-YX-ykU" kind="show" identifier="toCreateAccount" id="PWI-aK-Rov"/>
                     </connections>
                 </viewController>
