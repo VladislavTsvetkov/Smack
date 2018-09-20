@@ -126,7 +126,7 @@
                                 <rect key="frame" x="0.0" y="143" width="375" height="409"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="38" id="S16-wB-qlN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="channelCell" rowHeight="38" id="S16-wB-qlN" customClass="ChannelCell" customModule="Smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S16-wB-qlN" id="AeJ-84-hJ3">
@@ -146,8 +146,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="channelNameLbl" destination="6ki-fm-RXv" id="eaQ-lf-N5W"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="paa-jA-tex" id="1mX-fK-7LP"/>
+                                    <outlet property="delegate" destination="paa-jA-tex" id="5Y7-ga-fVp"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,6 +178,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="jZh-5P-wu8" id="qCg-UB-Xm7"/>
+                        <outlet property="tableView" destination="G16-DI-tlA" id="esl-Be-xVD"/>
                         <outlet property="userImg" destination="Ffi-TP-plD" id="a3f-aS-6Ri"/>
                         <segue destination="yd7-QP-GLD" kind="show" identifier="toLogin" id="5jK-a8-zQP"/>
                     </connections>

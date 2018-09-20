@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ChannelVC: UIViewController {
-
-    //Outlets
+class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    // Outlets
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var userImg: CircleImage!
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
@@ -53,5 +55,20 @@ class ChannelVC: UIViewController {
             userImg.image = UIImage(named: "menuProfileIcon")
             userImg.backgroundColor = UIColor.clear
         }
+    }
+    
+    // TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell {
+            let channel = MessageService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        }
+        return UITableViewCell()
     }
 }
