@@ -21,15 +21,15 @@ class SocketService: NSObject {
     lazy var socket = manager.defaultSocket
     
     func establishConnection() {
-        manager.connect()
+        socket.connect()
     }
     
     func closeConnection() {
-        manager.disconnect()
+        socket.disconnect()
     }
     
     func addChannel(channelName: String, channelDescription: String, completion: @escaping CompletionHandler) {
-        manager.emitAll("newChannel", channelName, channelDescription)
+        socket.emit("newChannel", channelName, channelDescription)
         completion(true)
     }
     
