@@ -57,6 +57,12 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    @IBAction func addChannelBtnPressed(_ sender: Any) {
+        let addChannel = AddChannelVC()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil)
+    }
+    
     // TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
