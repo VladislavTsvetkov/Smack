@@ -54,8 +54,7 @@ class MessageService {
                 guard let unwrappedJSON = json else {return}
                 for item in unwrappedJSON {
                     let messageBody = item["messageBody"].stringValue
-                    print(messageBody)
-            
+//                    print(messageBody)
                     let channelId = item["channelId"].stringValue
                     let id = item["_id"].stringValue
                     let userName = item["userName"].stringValue
