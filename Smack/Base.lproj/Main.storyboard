@@ -74,6 +74,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="messageTextFieldEditing:" destination="yjc-Ew-4xF" eventType="editingChanged" id="L76-bO-t8J"/>
+                                    <outlet property="delegate" destination="yjc-Ew-4xF" id="r6R-1C-JHM"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPd-vv-UWa">
