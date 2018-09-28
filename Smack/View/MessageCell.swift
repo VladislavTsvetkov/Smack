@@ -27,7 +27,21 @@ class MessageCell: UITableViewCell {
         usernameLbl.text = message.userName
         usernameImg.image = UIImage(named: message.userAvatar)
         usernameImg.backgroundColor = UserDataService.instance.returnUIColor(components: message.userAvatarColor)
-//        timeStampLbl.text = message.timeStamp
+        
+        guard var isoDate = message.timeStamp else {return}
+        let end = isoDate.index(isoDate.endIndex, offsetBy: -5)
+        isoDate = String(isoDate[..<end])
+        
+        let isoFormatter = ISO8601DateFormatter()
+        let chatDate = isoFormatter.date(from: isoDate.appending("z"))
+        
+        let newFormatter = DateFormatter()
+        newFormatter.dateFormat = "MMM d, HH:mm"
+        
+        if let finalDate = chatDate {
+            let finalDate = newFormatter.string(from: finalDate)
+            timeStampLbl.text = finalDate
+        }
     }
 
 }

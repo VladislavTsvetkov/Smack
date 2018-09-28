@@ -22,6 +22,9 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.estimatedRowHeight = 38
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
     
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)

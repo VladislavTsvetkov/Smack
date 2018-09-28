@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddChannelVC: UIViewController {
+class AddChannelVC: UIViewController, UITextFieldDelegate {
 
     // Outlets
     @IBOutlet weak var channelNameTextField: UITextField!
@@ -18,6 +18,10 @@ class AddChannelVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        channelNameTextField.delegate = self
+        channelDescTextField.delegate = self
+        
         setupView()
     }
     
@@ -32,6 +36,7 @@ class AddChannelVC: UIViewController {
     }
     
     @IBAction func closeModalPressed(_ sender: Any) {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -46,4 +51,21 @@ class AddChannelVC: UIViewController {
     @objc func closeTap(_ recognizer: UIGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == channelNameTextField {
+            channelDescTextField.becomeFirstResponder()
+        } else {
+            channelDescTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool { // return NO to not change text
+        
+        let nsString = NSString(string: textField.text!)
+        let newText = nsString.replacingCharacters(in: range, with: string)
+        return  newText.count <= 32
+    }
+    
 }

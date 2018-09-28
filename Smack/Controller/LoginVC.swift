@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
 
     // Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -22,6 +22,18 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func loginBtnPressed(_ sender: Any) {
+        loginUser()
+    }
+    
+    @IBAction func closePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func createAccountBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: TO_CREATE_ACCOUNT, sender: nil)
+    }
+    
+    func loginUser() {
         spinner.isHidden = false
         spinner.startAnimating()
         
@@ -42,18 +54,22 @@ class LoginVC: UIViewController {
         }
     }
     
-    
-    @IBAction func closePressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func createAccountBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: TO_CREATE_ACCOUNT, sender: nil)
-    }
-    
     func setupView() {
         spinner.isHidden = true
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
     }
+   
+    
+    // TextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.becomeFirstResponder()
+            loginUser()
+        }
+        return true
+    }
+        
 }

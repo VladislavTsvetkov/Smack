@@ -49,9 +49,6 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text, emailTextField.text != "" else { return }
         guard let password = passwordTextField.text, passwordTextField.text != "" else { return }
         
-        print(email)
-        print(password)
-        
         AuthService.instance.registerUser(email: email, password: password) { (success) in
             if success {
                 AuthService.instance.loginUser(email: email, password: password, completion: { (success) in
@@ -89,6 +86,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func closePressed(_ sender: Any) {
+        handleTap()
         performSegue(withIdentifier: UNWIND, sender: nil)
     }
  
@@ -106,6 +104,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    // TextField
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == usernameTextField {
             emailTextField.becomeFirstResponder()
@@ -117,4 +116,19 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == usernameTextField {
+            let nsString = NSString(string: textField.text!)
+            let newText = nsString.replacingCharacters(in: range, with: string)
+            return  newText.count <= 16
+        } else if textField == emailTextField {
+            let nsString = NSString(string: textField.text!)
+            let newText = nsString.replacingCharacters(in: range, with: string)
+            return  newText.count <= 40
+        } else {
+            let nsString = NSString(string: textField.text!)
+            let newText = nsString.replacingCharacters(in: range, with: string)
+            return  newText.count <= 30
+        }
+    }
 }

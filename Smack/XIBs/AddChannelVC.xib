@@ -23,9 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-cw-TLe" userLabel="bgView">
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-cw-TLe" userLabel="bgView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szS-1j-zVG">
@@ -71,7 +70,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="dcZ-UX-gZc">
                             <rect key="frame" x="42.5" y="97" width="250" height="86"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="channel name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71N-b4-gk5">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="channel name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="71N-b4-gk5">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="250" id="EDm-PE-mBh"/>
@@ -88,7 +87,7 @@
                                         <constraint firstAttribute="width" constant="250" id="eKT-LM-kZB"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSB-va-FPW">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kSB-va-FPW">
                                     <rect key="frame" x="0.0" y="50" width="250" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="250" id="Vvc-3e-37B"/>
@@ -124,8 +123,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="4VN-cw-TLe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="0Nm-Ve-S5c"/>
                 <constraint firstItem="szS-1j-zVG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="5Jq-BQ-2cq"/>
+                <constraint firstItem="4VN-cw-TLe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5Tp-7M-t45"/>
+                <constraint firstItem="4VN-cw-TLe" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="7sr-wa-4h3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="szS-1j-zVG" secondAttribute="trailing" constant="20" id="JLD-YS-iou"/>
+                <constraint firstItem="4VN-cw-TLe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JcG-Ql-rCS"/>
                 <constraint firstItem="szS-1j-zVG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Yym-Bf-jnB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
