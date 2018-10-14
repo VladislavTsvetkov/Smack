@@ -64,28 +64,8 @@
                                     <constraint firstAttribute="bottom" secondItem="n09-6C-87W" secondAttribute="bottom" constant="12" id="vfd-Q5-9Tm"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fV8-bd-yoX">
-                                <rect key="frame" x="0.0" y="627" width="327" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9hQ-45-2A8"/>
-                                </constraints>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="messageTextFieldEditing:" destination="yjc-Ew-4xF" eventType="editingChanged" id="L76-bO-t8J"/>
-                                    <outlet property="delegate" destination="yjc-Ew-4xF" id="r6R-1C-JHM"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPd-vv-UWa">
-                                <rect key="frame" x="337" y="632" width="30" height="30"/>
-                                <state key="normal" image="send"/>
-                                <connections>
-                                    <action selector="sendMessageBtnPressed:" destination="yjc-Ew-4xF" eventType="touchUpInside" id="9Y3-pR-Ccn"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mf8-Jn-9hr">
-                                <rect key="frame" x="0.0" y="77" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="77" width="375" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="80" id="V20-Pi-6Da" customClass="MessageCell" customModule="Smack" customModuleProvider="target">
@@ -147,6 +127,33 @@
                                     <outlet property="delegate" destination="yjc-Ew-4xF" id="tFO-H3-crc"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dca-zU-5NR" userLabel="bgViewForMsg">
+                                <rect key="frame" x="0.0" y="618.5" width="375" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="6br-Kc-I7Q"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fV8-bd-yoX" customClass="TextField" customModule="Smack" customModuleProvider="target">
+                                <rect key="frame" x="4" y="623" width="367" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9hQ-45-2A8"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="messageTextFieldEditing:" destination="yjc-Ew-4xF" eventType="editingChanged" id="L76-bO-t8J"/>
+                                    <outlet property="delegate" destination="yjc-Ew-4xF" id="r6R-1C-JHM"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPd-vv-UWa">
+                                <rect key="frame" x="337" y="628" width="30" height="30"/>
+                                <state key="normal" image="send"/>
+                                <connections>
+                                    <action selector="sendMessageBtnPressed:" destination="yjc-Ew-4xF" eventType="touchUpInside" id="9Y3-pR-Ccn"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLw-Zn-lre">
                                 <rect key="frame" x="0.0" y="77" width="375" height="30"/>
                                 <subviews>
@@ -167,20 +174,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YPd-vv-UWa" firstAttribute="centerY" secondItem="fV8-bd-yoX" secondAttribute="centerY" id="3pu-Vc-6Ys"/>
-                            <constraint firstItem="WEt-Tr-7Fo" firstAttribute="trailing" secondItem="fV8-bd-yoX" secondAttribute="trailing" constant="48" id="46Z-yt-7Fm"/>
-                            <constraint firstItem="fV8-bd-yoX" firstAttribute="leading" secondItem="WEt-Tr-7Fo" secondAttribute="leading" id="4VK-Pb-9ob"/>
-                            <constraint firstItem="fV8-bd-yoX" firstAttribute="top" secondItem="Mf8-Jn-9hr" secondAttribute="bottom" id="B90-HF-5Zu"/>
-                            <constraint firstItem="WEt-Tr-7Fo" firstAttribute="bottom" secondItem="fV8-bd-yoX" secondAttribute="bottom" id="BTh-ez-2q4"/>
+                            <constraint firstItem="WEt-Tr-7Fo" firstAttribute="trailing" secondItem="fV8-bd-yoX" secondAttribute="trailing" constant="4" id="46Z-yt-7Fm"/>
+                            <constraint firstItem="fV8-bd-yoX" firstAttribute="leading" secondItem="WEt-Tr-7Fo" secondAttribute="leading" constant="4" id="4VK-Pb-9ob"/>
+                            <constraint firstItem="WEt-Tr-7Fo" firstAttribute="bottom" secondItem="fV8-bd-yoX" secondAttribute="bottom" constant="4" id="BTh-ez-2q4"/>
+                            <constraint firstItem="YPd-vv-UWa" firstAttribute="centerY" secondItem="fV8-bd-yoX" secondAttribute="centerY" id="I0X-Ah-RPZ"/>
+                            <constraint firstItem="WEt-Tr-7Fo" firstAttribute="bottom" secondItem="Mf8-Jn-9hr" secondAttribute="bottom" constant="47" id="Jan-vm-CnU"/>
                             <constraint firstItem="G8w-qp-Aww" firstAttribute="leading" secondItem="38e-wq-TXt" secondAttribute="leading" id="Lzc-vy-JrQ"/>
                             <constraint firstItem="QLw-Zn-lre" firstAttribute="leading" secondItem="WEt-Tr-7Fo" secondAttribute="leading" id="So6-tg-xFb"/>
                             <constraint firstItem="G8w-qp-Aww" firstAttribute="top" secondItem="38e-wq-TXt" secondAttribute="top" id="ZXo-S6-YLd"/>
                             <constraint firstItem="QLw-Zn-lre" firstAttribute="trailing" secondItem="WEt-Tr-7Fo" secondAttribute="trailing" id="bhJ-J6-ajc"/>
                             <constraint firstItem="Mf8-Jn-9hr" firstAttribute="leading" secondItem="WEt-Tr-7Fo" secondAttribute="leading" id="cKk-0i-aOk"/>
                             <constraint firstItem="QLw-Zn-lre" firstAttribute="top" secondItem="G8w-qp-Aww" secondAttribute="bottom" id="lZR-gX-waA"/>
+                            <constraint firstItem="Dca-zU-5NR" firstAttribute="leading" secondItem="WEt-Tr-7Fo" secondAttribute="leading" id="nLj-EN-eHe"/>
                             <constraint firstItem="Mf8-Jn-9hr" firstAttribute="top" secondItem="G8w-qp-Aww" secondAttribute="bottom" id="rGr-C6-F2s"/>
+                            <constraint firstItem="YPd-vv-UWa" firstAttribute="leading" secondItem="WEt-Tr-7Fo" secondAttribute="trailing" constant="-38" id="roh-b3-LvN"/>
+                            <constraint firstItem="Dca-zU-5NR" firstAttribute="trailing" secondItem="WEt-Tr-7Fo" secondAttribute="trailing" id="v74-rp-dYm"/>
                             <constraint firstItem="WEt-Tr-7Fo" firstAttribute="trailing" secondItem="Mf8-Jn-9hr" secondAttribute="trailing" id="x3h-iT-SYo"/>
                             <constraint firstItem="WEt-Tr-7Fo" firstAttribute="trailing" secondItem="YPd-vv-UWa" secondAttribute="trailing" constant="8" id="y2w-Su-Kkw"/>
+                            <constraint firstItem="Dca-zU-5NR" firstAttribute="centerY" secondItem="fV8-bd-yoX" secondAttribute="centerY" id="yYW-QW-coN"/>
                             <constraint firstItem="WEt-Tr-7Fo" firstAttribute="trailing" secondItem="G8w-qp-Aww" secondAttribute="trailing" id="ybD-VE-ES4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WEt-Tr-7Fo"/>
@@ -189,6 +200,7 @@
                         <outlet property="channelNameLbl" destination="PYV-L3-zCW" id="MoG-3e-O6i"/>
                         <outlet property="menuBtn" destination="n09-6C-87W" id="UoH-bE-was"/>
                         <outlet property="messageTxtBoxTextField" destination="fV8-bd-yoX" id="6Hy-GJ-QC7"/>
+                        <outlet property="messageTxtFldConstrBottom" destination="BTh-ez-2q4" id="ao6-QU-DDd"/>
                         <outlet property="sendBtn" destination="YPd-vv-UWa" id="YSL-rV-zfg"/>
                         <outlet property="tableView" destination="Mf8-Jn-9hr" id="lD0-qo-65z"/>
                         <outlet property="typingUsersLbl" destination="PsG-My-o0s" id="P62-Bs-gmU"/>

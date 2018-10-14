@@ -13,7 +13,11 @@ class AddChannelVC: UIViewController, UITextFieldDelegate {
     // Outlets
     @IBOutlet weak var channelNameTextField: UITextField!
     @IBOutlet weak var channelDescTextField: UITextField!
-    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var bgView: UIVisualEffectView!
+    @IBOutlet weak var createChannelView: UIView!
+    
+    // Constraints
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
@@ -22,7 +26,23 @@ class AddChannelVC: UIViewController, UITextFieldDelegate {
         channelNameTextField.delegate = self
         channelDescTextField.delegate = self
         
+        topConstraint.constant = UIScreen.main.bounds.height
+        ChatVC.isSensetivityToKeyboard = false
         setupView()
+    }
+    
+    deinit {
+        ChatVC.isSensetivityToKeyboard = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.topConstraint.constant = 80
+            UIView.animate(withDuration: CATransaction.animationDuration()) {
+                self?.view.layoutSubviews()
+            }
+        }
     }
     
     @IBAction func createChannelBtnPressed(_ sender: Any) {
@@ -30,26 +50,54 @@ class AddChannelVC: UIViewController, UITextFieldDelegate {
         guard let channelDescription = channelDescTextField.text else {return}
         SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
             if success {
-                self.dismiss(animated: true, completion: nil)
+                self.closeView()
             }
         }
     }
     
     @IBAction func closeModalPressed(_ sender: Any) {
+       closeView()
+    }
+    
+    @objc func closeView() {
         view.endEditing(true)
-        dismiss(animated: true, completion: nil)
+        topConstraint.constant = UIScreen.main.bounds.height
+        
+        UIView.animate(withDuration: CATransaction.animationDuration(),
+                       animations:
+            { [weak self] in
+                self?.view.layoutSubviews()
+        }) { [weak self] (finish) in
+            if finish {
+                
+                UIView.animate(withDuration: CATransaction.animationDuration(),
+                               animations:
+                    {
+                        self?.bgView.alpha = 0
+                },
+                               completion:
+                    { (finish) in
+                        if finish {
+                            self?.dismiss(animated: false, completion: nil)
+                        }
+                })
+                
+            }
+        }
+    }
+    
+    @objc func closeKeyboard() {
+        view.endEditing(true)
     }
     
     func setupView() {
         channelNameTextField.attributedPlaceholder = NSAttributedString(string: "channel's name", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
         channelDescTextField.attributedPlaceholder = NSAttributedString(string: "description", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
         
-        let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeTap(_:)))
+        let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeView))
         bgView.addGestureRecognizer(closeTouch)
-    }
-    
-    @objc func closeTap(_ recognizer: UIGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
+        let closeKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeKeyboard))
+        createChannelView.addGestureRecognizer(closeKeyboardTap)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -67,5 +115,4 @@ class AddChannelVC: UIViewController, UITextFieldDelegate {
         let newText = nsString.replacingCharacters(in: range, with: string)
         return  newText.count <= 32
     }
-    
 }

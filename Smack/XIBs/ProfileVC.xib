@@ -12,8 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileVC" customModule="Smack" customModuleProvider="target">
             <connections>
-                <outlet property="bgView" destination="thM-CQ-h7S" id="3US-Rz-AJt"/>
+                <outlet property="bgView" destination="YFd-bD-pJy" id="Aq1-Ji-T7Z"/>
+                <outlet property="centerConstaraint" destination="kCs-HC-MiM" id="dfS-m2-13f"/>
                 <outlet property="emailLbl" destination="t1b-cE-URn" id="m8g-lG-UXl"/>
+                <outlet property="infoView" destination="uJY-CH-bgt" id="I5R-S4-wq2"/>
                 <outlet property="profileImg" destination="g3u-5G-rxR" id="kU4-xw-H34"/>
                 <outlet property="usernameLbl" destination="eGT-Ja-u6j" id="TGd-HN-Bqy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,10 +26,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thM-CQ-h7S" userLabel="bgView">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFd-bD-pJy">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Mbr-Ji-BaG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJY-CH-bgt">
                     <rect key="frame" x="20" y="173.5" width="335" height="320"/>
                     <subviews>
@@ -93,13 +99,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="thM-CQ-h7S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EUq-w7-gNV"/>
+                <constraint firstAttribute="bottom" secondItem="YFd-bD-pJy" secondAttribute="bottom" id="2u1-S9-Ysl"/>
+                <constraint firstItem="YFd-bD-pJy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Mcx-jQ-H41"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uJY-CH-bgt" secondAttribute="trailing" constant="20" id="QsD-pb-dVP"/>
-                <constraint firstItem="thM-CQ-h7S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Z8w-zC-c9Y"/>
-                <constraint firstItem="thM-CQ-h7S" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="dCn-hE-5u6"/>
-                <constraint firstItem="thM-CQ-h7S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gVJ-a9-zxM"/>
+                <constraint firstItem="YFd-bD-pJy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="T0P-Go-BTk"/>
                 <constraint firstItem="uJY-CH-bgt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kCs-HC-MiM"/>
                 <constraint firstItem="uJY-CH-bgt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="t9Z-lY-bd1"/>
+                <constraint firstAttribute="trailing" secondItem="YFd-bD-pJy" secondAttribute="trailing" id="upr-Xt-2Hu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
