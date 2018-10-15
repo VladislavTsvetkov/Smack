@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    
+    static var isSensetivityToKeyboard : Bool = true
     
     // Outlets
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
-    @IBOutlet weak var messageTxtBoxTextField: UITextField!
+    @IBOutlet weak var messageTxtBoxTextField: TextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var typingUsersLbl: UILabel!
@@ -21,16 +23,20 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Variables
     var isTyping = false
+    var isKeyboardShow = false
+    
+    // Constraints
+    @IBOutlet weak var messageTxtFldConstrBottom: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendBtn.isHidden = true
+        sendBtn.isEnabled = false
         
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
-        view.bindToKeyboard()
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.handleTap))
         view.addGestureRecognizer(tap)
         menuBtn.addTarget(self.revealViewController(),
@@ -43,14 +49,16 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         SocketService.instance.getChatMessage { (newMessage) in
             if newMessage.channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLogedIn {
-                MessageService.instance.messages.append(newMessage)
+                MessageService.instance.messages.insert(newMessage, at: 0)
                 self.tableView.reloadData()
                 if MessageService.instance.messages.count > 0 {
-                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
-                    self.tableView.scrollToRow(at: endIndex, at: .bottom
-                        , animated: true)
+                    let endIndex = IndexPath(row: 0, section: 0)
+                    self.tableView.scrollToRow(at: endIndex, at: .top, animated: true)
                 }
             }
         }
@@ -90,6 +98,40 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    // Keyboard
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, ChatVC.isSensetivityToKeyboard {
+            if !isKeyboardShow {
+                let insets = UIEdgeInsets(top: keyboardSize.height , left: 0, bottom: 0, right: 0)
+                tableView.contentInset = insets
+                tableView.scrollIndicatorInsets = insets
+                let endIndex = IndexPath(row: 0, section: 0)
+                tableView.scrollToRow(at: endIndex, at: .top, animated: true)
+                messageTxtFldConstrBottom.constant = keyboardSize.height + 4
+                UIView.animate(withDuration: CATransaction.animationDuration()) {
+                    self.view.layoutSubviews()
+                }
+                isKeyboardShow = !isKeyboardShow
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, ChatVC.isSensetivityToKeyboard {
+            if isKeyboardShow {
+                let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                tableView.contentInset = insets
+                tableView.scrollIndicatorInsets = insets
+                messageTxtFldConstrBottom.constant = 4
+                UIView.animate(withDuration: CATransaction.animationDuration()) {
+                  self.view.layoutSubviews()
+                }
+                isKeyboardShow = !isKeyboardShow
+            }
+        }
+    }
+    // Keyboard end
     
     @objc func userDataDidChange(_ notif: Notification) {
         if AuthService.instance.isLogedIn {
@@ -154,12 +196,12 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         guard let channelId = MessageService.instance.selectedChannel?.id else {return}
         if messageTxtBoxTextField.text == "" {
             isTyping = false
-            sendBtn.isHidden = true
+            sendBtn.isEnabled = false
             SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
         } else {
             if isTyping == false {
                 isTyping = true
-                sendBtn.isHidden = false
+                sendBtn.isEnabled = true
                 SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
@@ -167,7 +209,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     // TableView
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.messages.count
     }
@@ -176,10 +217,11 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell {
            let message = MessageService.instance.messages[indexPath.row]
             cell.configureCell(message: message)
+            cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             return cell
         } else {
             return UITableViewCell()
         }
     }
-    
+
 }

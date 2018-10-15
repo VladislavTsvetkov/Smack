@@ -12,9 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddChannelVC" customModule="Smack" customModuleProvider="target">
             <connections>
-                <outlet property="bgView" destination="4VN-cw-TLe" id="kb8-Nl-33a"/>
+                <outlet property="bgView" destination="0jY-nU-T9r" id="TaO-YV-ltG"/>
                 <outlet property="channelDescTextField" destination="kSB-va-FPW" id="Hc2-SP-Lth"/>
                 <outlet property="channelNameTextField" destination="71N-b4-gk5" id="qaR-Su-2Tt"/>
+                <outlet property="createChannelView" destination="szS-1j-zVG" id="Vxr-1G-GIc"/>
+                <outlet property="topConstraint" destination="5Jq-BQ-2cq" id="fmR-dq-JkH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,10 +25,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-cw-TLe" userLabel="bgView">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jY-nU-T9r">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DuX-Rj-4y1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szS-1j-zVG">
                     <rect key="frame" x="20" y="100" width="335" height="320"/>
                     <subviews>
@@ -77,7 +83,7 @@
                                     </constraints>
                                     <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTP-nB-yKu">
                                     <rect key="frame" x="0.0" y="34" width="250" height="2"/>
@@ -94,7 +100,7 @@
                                     </constraints>
                                     <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGH-0i-rzt">
                                     <rect key="frame" x="0.0" y="84" width="250" height="2"/>
@@ -123,13 +129,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="4VN-cw-TLe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="0Nm-Ve-S5c"/>
                 <constraint firstItem="szS-1j-zVG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="5Jq-BQ-2cq"/>
-                <constraint firstItem="4VN-cw-TLe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5Tp-7M-t45"/>
-                <constraint firstItem="4VN-cw-TLe" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="7sr-wa-4h3"/>
+                <constraint firstItem="0jY-nU-T9r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ajk-Ft-lJb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="szS-1j-zVG" secondAttribute="trailing" constant="20" id="JLD-YS-iou"/>
-                <constraint firstItem="4VN-cw-TLe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JcG-Ql-rCS"/>
+                <constraint firstAttribute="bottom" secondItem="0jY-nU-T9r" secondAttribute="bottom" id="LOt-fQ-hHK"/>
+                <constraint firstItem="0jY-nU-T9r" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UAf-tg-uyM"/>
                 <constraint firstItem="szS-1j-zVG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Yym-Bf-jnB"/>
+                <constraint firstAttribute="trailing" secondItem="0jY-nU-T9r" secondAttribute="trailing" id="ljU-9B-PWm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="154.27286356821591"/>

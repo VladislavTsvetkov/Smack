@@ -52,7 +52,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if AuthService.instance.isLogedIn {
             let addChannel = AddChannelVC()
             addChannel.modalPresentationStyle = .custom
-            present(addChannel, animated: true, completion: nil)
+            present(addChannel, animated: false, completion: nil)
         }
     }
     
@@ -60,7 +60,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if AuthService.instance.isLogedIn {
             let profile = ProfileVC()
             profile.modalPresentationStyle = .custom
-            present(profile, animated: true, completion: nil)
+            present(profile, animated: false, completion: nil)
         } else {
             performSegue(withIdentifier: TO_LOGIN, sender: nil)
         }

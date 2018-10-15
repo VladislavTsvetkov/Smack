@@ -24,7 +24,7 @@ class MessageService {
             if response.result.error == nil {
                 
                 guard let data = response.data else {return}
-                if let json = try? JSON(data: data).array { // how to make it correctly ?
+                if let json = try? JSON(data: data).array {
                     guard let unwrappedJSON = json else {return}
                     for item in unwrappedJSON {
                         let name = item["name"].stringValue
@@ -51,7 +51,7 @@ class MessageService {
                 self.clearMessages()
                 
                 guard let data = response.data else {return}
-                guard let json = try? JSON(data: data).array else {return} // how to make it correctly ?
+                guard let json = try? JSON(data: data).array else {return} 
                 guard let unwrappedJSON = json else {return}
                 for item in unwrappedJSON {
                     let messageBody = item["messageBody"].stringValue
@@ -65,7 +65,7 @@ class MessageService {
                     
                     let message = Message(message: messageBody, userName: userName, channelId: channelId,
                                           userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
-                    self.messages.append(message)
+                    self.messages.insert(message, at: 0)
                 }
                 completion(true)
             } else {
