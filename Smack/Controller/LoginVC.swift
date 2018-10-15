@@ -22,6 +22,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginBtnPressed(_ sender: Any) {
+        view.endEditing(true)
         loginUser()
     }
     

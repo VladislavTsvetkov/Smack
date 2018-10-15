@@ -32,6 +32,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         super.viewDidLoad()
         
         sendBtn.isEnabled = false
+        messageTxtBoxTextField.isEnabled = false
         
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -93,6 +94,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         
         if AuthService.instance.isLogedIn { // check for user login the app, and we try to find info in db and send the notification
             // it's need to show info in profile VC
+            messageTxtBoxTextField.isEnabled = true
             AuthService.instance.findUserByEmail { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             }
@@ -106,8 +108,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                 let insets = UIEdgeInsets(top: keyboardSize.height , left: 0, bottom: 0, right: 0)
                 tableView.contentInset = insets
                 tableView.scrollIndicatorInsets = insets
-                let endIndex = IndexPath(row: 0, section: 0)
-                tableView.scrollToRow(at: endIndex, at: .top, animated: true)
+                if  MessageService.instance.messages.first != nil {
+                    let endIndex = IndexPath(row: 0, section: 0)
+                    tableView.scrollToRow(at: endIndex, at: .top, animated: true)
+                }
                 messageTxtFldConstrBottom.constant = keyboardSize.height + 4
                 UIView.animate(withDuration: CATransaction.animationDuration()) {
                     self.view.layoutSubviews()
@@ -135,9 +139,11 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     
     @objc func userDataDidChange(_ notif: Notification) {
         if AuthService.instance.isLogedIn {
+            messageTxtBoxTextField.isEnabled = true
             onLoginGetMessages()
         } else {
             channelNameLbl.text = "Please Log In"
+            messageTxtBoxTextField.isEnabled = false
             tableView.reloadData()
         }
     }
@@ -223,5 +229,4 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             return UITableViewCell()
         }
     }
-
 }
