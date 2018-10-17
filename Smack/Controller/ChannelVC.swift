@@ -116,4 +116,8 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         self.revealViewController().revealToggle(animated: true) //the menu slide back, when we chose the channel
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

@@ -18,38 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ceated by VladisLove Tsvetkov" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxd-q0-cWC">
-                                <rect key="frame" x="0.0" y="646" width="375" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.017714360982326927" green="1" blue="0.023394647600190832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dark0" translatesAutoresizingMaskIntoConstraints="NO" id="b0R-BL-YzZ">
-                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smack_logo_b" translatesAutoresizingMaskIntoConstraints="NO" id="Dca-H6-4yC">
+                                <rect key="frame" x="86" y="241" width="203" height="185"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="BmS-9W-GJF"/>
-                                    <constraint firstAttribute="height" constant="200" id="xhy-tP-B6z"/>
+                                    <constraint firstAttribute="height" constant="185" id="3Hg-9V-g7z"/>
+                                    <constraint firstAttribute="width" constant="203" id="g04-Q6-55H"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BD-l2-Q5a">
+                                <rect key="frame" x="135" y="407" width="105" height="39"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" red="0.27019857489999999" green="0.4031649678" blue="0.87109375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.99194461107254028" green="0.99615627527236938" blue="0.99600595235824585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gxd-q0-cWC" secondAttribute="bottomMargin" constant="8" id="9tM-wk-Ie5"/>
-                            <constraint firstItem="Gxd-q0-cWC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ErB-ZK-Bv2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gxd-q0-cWC" secondAttribute="trailingMargin" constant="8" id="GMs-eo-Xcs"/>
-                            <constraint firstItem="b0R-BL-YzZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LIh-MW-sIU"/>
-                            <constraint firstItem="b0R-BL-YzZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mBr-mo-kG8"/>
+                            <constraint firstItem="Dca-H6-4yC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VIj-pp-mmX"/>
+                            <constraint firstItem="7BD-l2-Q5a" firstAttribute="top" secondItem="Dca-H6-4yC" secondAttribute="bottom" constant="-19" id="nDg-pd-SPY"/>
+                            <constraint firstItem="7BD-l2-Q5a" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t1C-6r-SNY"/>
+                            <constraint firstItem="Dca-H6-4yC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="thX-z9-6lC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="dark0" width="100" height="100"/>
+        <image name="smack_logo_b" width="1024" height="1024"/>
     </resources>
 </document>

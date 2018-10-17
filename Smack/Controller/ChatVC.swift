@@ -103,7 +103,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     
     // Keyboard
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, ChatVC.isSensetivityToKeyboard {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, ChatVC.isSensetivityToKeyboard {
             if !isKeyboardShow {
                 let insets = UIEdgeInsets(top: keyboardSize.height , left: 0, bottom: 0, right: 0)
                 tableView.contentInset = insets
@@ -122,7 +122,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, ChatVC.isSensetivityToKeyboard {
+        if let _ = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, ChatVC.isSensetivityToKeyboard {
             if isKeyboardShow {
                 let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
                 tableView.contentInset = insets
@@ -228,5 +228,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         } else {
             return UITableViewCell()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
